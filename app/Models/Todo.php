@@ -9,5 +9,5 @@ class Todo extends Model
 {
     use SoftDeletes;
 
-    protected $fillable = ['id','content','created_at','updated_at'];
+    protected $fillable = ['id', 'content', 'created_at', 'updated_at'];
 }

@@ -29,9 +29,9 @@
           <td>{{$item->content}}</td>
           <td><button>更新</button></td>
           <td>
-            <form method="POST">
+            <form method="POST" action="{{route('todo.delete', $item->id)}}">
               @csrf
-              <button formaction= >削除</button>
+              <button type="submit">削除</button>
             </form>
           </td>
         </tr>
