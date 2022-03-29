@@ -26,18 +26,18 @@
       @foreach ($items as $item)
         <tr>
           <td>{{$item->created_at}}</td>
-          <td><input type="text" value="{{$item->content}}"></td>
-          <td>
-            <form method="POST" action="{{route('todo.update',$item->id)}}">
-              @csrf
-              <button type="submit">更新</button></td>
-            </form>
-          <td>
-            <form method="POST" action="{{route('todo.delete', $item->id)}}">
-              @csrf
-              <button type="submit">削除</button>
-            </form>
-          </td>
+            
+          <form method="POST" >
+            {{-- 更新機能 --}}
+            @csrf
+            <td><input type="text" value="{{$item->content}}"></td>
+            {{-- <td><button formaction="{{route('todo.update',$item)}}">更新</button></td> --}}
+            {{-- 更新機能の終わり --}}
+            <td>
+                <button formaction="{{route('todo.delete')}}">削除</button>
+            </td>
+          </form>
+
         </tr>
       @endforeach
   </table>
