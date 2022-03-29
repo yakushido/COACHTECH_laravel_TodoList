@@ -21,10 +21,17 @@ class TodoController extends Controller
     }
 
 
-    public function destroy($id)
+    public function delete($id)
     {
-        $item = Todo::find($id);
-        $item ->delete();
+        $item_id = Todo::find($id);
+        $item_id->delete();
+        return redirect('/');
+    }
+
+    public function update($id)
+    {
+        $item= Todo::all();
+        Todo::where('id', $id)->update($item);
         return redirect('/');
     }
 }

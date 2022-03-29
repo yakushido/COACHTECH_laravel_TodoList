@@ -26,8 +26,12 @@
       @foreach ($items as $item)
         <tr>
           <td>{{$item->created_at}}</td>
-          <td>{{$item->content}}</td>
-          <td><button>更新</button></td>
+          <td><input type="text" value="{{$item->content}}"></td>
+          <td>
+            <form method="POST" action="{{route('todo.update',$item->id)}}">
+              @csrf
+              <button type="submit">更新</button></td>
+            </form>
           <td>
             <form method="POST" action="{{route('todo.delete', $item->id)}}">
               @csrf
