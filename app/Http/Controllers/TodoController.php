@@ -28,7 +28,7 @@ class TodoController extends Controller
         return redirect('/');
     }
 
-    public function update(Todo $id, ClientRequest $request)
+    public function update(Todo $id,ClientRequest $request)
     {
         $update_data = $id->first();
         $update_data->update(['content' => $request->update_content]);

@@ -70,6 +70,9 @@
 <div class="todoList_content">
   <form class="add" method="POST">
     @csrf
+    @if($errors->has('content'))
+      <p>{{$errors -> first('content')}}</p>
+    @endif
     <input class="add_input" type="text" name="content"><button class="add_button" formaction="{{route('todo.create')}}">追加</button>
   </form>
   <table class="content_table">
