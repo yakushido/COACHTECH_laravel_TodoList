@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Todo;
 use Illuminate\Support\Facades\Route;
+use App\Http\Requests\ClientRequest;
 
 class TodoController extends Controller
 {
@@ -14,7 +15,7 @@ class TodoController extends Controller
         return view('index', ['items' => $items]);
     }
 
-    public function create(Request $request)
+    public function create(ClientRequest $request)
     {
         $form = $request->all();
         Todo::create($form);
@@ -27,20 +28,11 @@ class TodoController extends Controller
         return redirect('/');
     }
 
-    public function update(Todo $id, Request $request)
+    public function update(Todo $id, ClientRequest $request)
     {
         $update_data = $id->first();
         $update_data->update(['content' => $request->update_content]);
         return redirect('/');
         // echo $update_data;
-    }
-
-    public function post(Request $request)
-    {
-        $validate_rule = [
-            'content' => 'required|max:20'
-        ];
-        $this->validate($request, $validate_rule);
-        return redirect('/');
     }
 }

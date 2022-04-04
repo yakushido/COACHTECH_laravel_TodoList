@@ -6,6 +6,7 @@
   }
   table{
     margin: 0 auto;
+    width: 100%;
   }
   th:nth-child(1),
   td:nth-child(1),
@@ -55,10 +56,18 @@
   }
   .update_input{
     height: 30px;
+    width: 90%;
+  }
+  button:hover{
+    cursor: pointer;
+  }
+  .todoList_content{
+    width: 100%;
   }
   
 </style>
 @section('content')
+<div class="todoList_content">
   <form class="add" method="POST">
     @csrf
     <input class="add_input" type="text" name="content"><button class="add_button" formaction="{{route('todo.create')}}">追加</button>
@@ -91,4 +100,5 @@
     </tr>
     @endforeach
   </table>
+</div>
 @endsection

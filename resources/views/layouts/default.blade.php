@@ -15,7 +15,7 @@
     }
     .content{
       background-color: #fff;
-      width: 70%;
+      width: 60%;
       margin: 100px auto;
       padding: 20px;
       border-radius: 15px
