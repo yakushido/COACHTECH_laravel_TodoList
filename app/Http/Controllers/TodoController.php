@@ -13,13 +13,13 @@ class TodoController extends Controller
         $items = Todo::all();
         return view('index', ['items' => $items]);
     }
+
     public function create(Request $request)
     {
         $form = $request->all();
         Todo::create($form);
         return redirect('/');
     }
-
 
     public function delete(Todo $id)
     {
@@ -30,8 +30,17 @@ class TodoController extends Controller
     public function update(Todo $id, Request $request)
     {
         $update_data = $id->first();
-        $update_data->update(['content' => $request->update_text]);
+        $update_data->update(['content' => $request->update_content]);
         return redirect('/');
         // echo $update_data;
+    }
+
+    public function post(Request $request)
+    {
+        $validate_rule = [
+            'content' => 'required|max:20'
+        ];
+        $this->validate($request, $validate_rule);
+        return redirect('/');
     }
 }

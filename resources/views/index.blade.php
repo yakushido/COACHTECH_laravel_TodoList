@@ -77,7 +77,7 @@
         {{-- 更新機能 --}}
       <form method="POST" action="{{route('todo.update',['id' => $item->id])}}">
       @csrf
-        <td><input class="update_input" type="text" name="update_text" value="{{$item->content}}"></td>
+        <td><input class="update_input" type="text" name="update_content" value="{{$item->content}}"></td>
         <td><button class="update_button">更新</button></td>
       </form>
         {{-- 更新機能の終わり --}}
