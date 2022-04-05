@@ -29,7 +29,7 @@ class TodoController extends Controller
         return redirect('/');
     }
 
-    public function update(ClientRequest $request,$id)
+    public function update(Request $request,$id)
     {
         $update_data = Todo::find($id);
         $update_data->content = $request->updateContent;

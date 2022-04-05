@@ -73,9 +73,6 @@
     @if($errors->has('newContent'))
       <p>{{$errors -> first('newContent')}}</p>
     @endif
-    @if($errors->has('updateContent'))
-      <p>{{$errors -> first('updateContent')}}</p>
-    @endif
     <input class="add_input" type="text" name="newContent"><button class="add_button" formaction="{{route('todo.create')}}">追加</button>
   </form>
   <table class="content_table">
