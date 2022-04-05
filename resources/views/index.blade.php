@@ -70,10 +70,13 @@
 <div class="todoList_content">
   <form class="add" method="POST">
     @csrf
-    @if($errors->has('content'))
-      <p>{{$errors -> first('content')}}</p>
+    @if($errors->has('newContent'))
+      <p>{{$errors -> first('newContent')}}</p>
     @endif
-    <input class="add_input" type="text" name="content"><button class="add_button" formaction="{{route('todo.create')}}">追加</button>
+    @if($errors->has('updateContent'))
+      <p>{{$errors -> first('updateContent')}}</p>
+    @endif
+    <input class="add_input" type="text" name="newContent"><button class="add_button" formaction="{{route('todo.create')}}">追加</button>
   </form>
   <table class="content_table">
     <tr>
@@ -89,7 +92,7 @@
         {{-- 更新機能 --}}
       <form method="POST" action="{{route('todo.update',['id' => $item->id])}}">
       @csrf
-        <td><input class="update_input" type="text" name="update_content" value="{{$item->content}}"></td>
+        <td><input class="update_input" type="text" name="updateContent" value="{{$item->content}}"></td>
         <td><button class="update_button">更新</button></td>
       </form>
         {{-- 更新機能の終わり --}}

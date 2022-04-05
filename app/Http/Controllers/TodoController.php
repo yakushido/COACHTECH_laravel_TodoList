@@ -17,8 +17,9 @@ class TodoController extends Controller
 
     public function create(ClientRequest $request)
     {
-        $form = $request->all();
-        Todo::create($form);
+        Todo::create([
+            'content' => $request->newContent
+        ]);
         return redirect('/');
     }
 
@@ -28,10 +29,11 @@ class TodoController extends Controller
         return redirect('/');
     }
 
-    public function update(Todo $id,ClientRequest $request)
+    public function update(ClientRequest $request,$id)
     {
-        $update_data = $id->first();
-        $update_data->update(['content' => $request->update_content]);
+        $update_data = Todo::find($id);
+        $update_data->content = $request->updateContent;
+        $update_data->save();
         return redirect('/');
         // echo $update_data;
     }

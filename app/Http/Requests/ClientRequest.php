@@ -24,15 +24,18 @@ class ClientRequest extends FormRequest
     public function rules()
     {
         return [
-            'content' => 'required|max:20'
+            'newContent' => 'required|max:20',
+            'updateContent' => 'required|max:20'
         ];
     }
 
     public function messages()
     {
         return [
-            'content.required' => '入力してください。',
-            'content.max' => '20文字以内で入力してください。'
+            'newContent.required' => '入力してください。',
+            'newContent.max' => '20文字以内で入力してください。',
+            'updateContent.required' => '更新内容を入力してください。',
+            'updateContent.max' => '更新内容は20文字以内で入力してください。'
         ];
     }
 }
